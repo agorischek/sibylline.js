@@ -1,0 +1,27 @@
+{
+  "name": "sibylline",
+  "version": "0.0.1",
+  "description": "Sibylline JavaScript interpretter",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://agorischek@github.com/agorischek/sibylline.js.git"
+  },
+  "author": "Alex Gorischek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/agorischek/sibylline.js/issues"
+  },
+  "homepage": "https://github.com/agorischek/sibylline.js#readme",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "mocha": "^5.1.0",
+    "underscore": "^1.8.3"
+  }
+}
