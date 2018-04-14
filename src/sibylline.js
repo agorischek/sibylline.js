@@ -163,6 +163,9 @@ const sibylline = {
 
                         //If the content option doesn't have a condition parenthetical, just set the text
                         else {
+                            contentOption.condition = null
+                            contentOption.operator = null
+                            contentOption.reference = null
                             contentOption.text = content
                         }
                     })
@@ -203,21 +206,23 @@ const sibylline = {
                         }
                     }
                     else if(operator == null){
+
+                        //A lack of operator character is interpreted as "equals"
                         if(time == reference){
                             text = option.text
                         }
-                        else{
 
-                            //If none of the previous comparisons matched, and if there's a fallback, use the fallback
-                            if(options[index + 1]){
-                                text = options[index + 1].text
-                            }
+                        //In the case where the first (and possibly only) content option has no condition,
+                        //both the operator and the reference will be null
+                        else if(reference == null){
+                            text = option.text
                         }
-                    }
 
-                    //There is no particular expected case for this, it's just a last resort
-                    else{
-                        text = option.text
+                        //If none of the previous comparisons matched, and if there's a fallback, use the fallback
+                        else if(options[index + 1]){
+                            text = options[index + 1].text
+                        }
+
                     }
                 }
             })

@@ -10,6 +10,13 @@ describe("Interpreter", function(){
       )
   })
 
+  it("should include content with no conditions and a single option", function(){
+      assert.equal(
+          sibylline.render("a|||b|||c", 2018),
+          "abc"
+      )
+  })
+
   it("should include content with simple time match, with no fallback", function(){
       assert.equal(
           sibylline.render("a|||(2018)b|||c", 2018),
