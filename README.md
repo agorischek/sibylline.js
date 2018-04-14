@@ -45,7 +45,7 @@ a|||(>2010)b|(<2000)c|d|||e
 
 If none of the options with conditions match, the first option without a condition is used:
 ```
-a|||(2018)b|c|d|e|||f
+a|||(<=2018)b|c|d|e|||f
 
 \\2018 --> abf
 \\Not 2018 --> acf
@@ -62,29 +62,34 @@ sibylline.render("a&&(2018)b&&c", "2019", {milestone:"2020"}, "&&")
 ```
 
 ## Operators
-Sibylline supports five operators:
-### Equals
-Equals is indicated by a lack of explicit operator character:
+Sibylline supports six operators:
+### During
+During is indicated by a lack of explicit operator character:
 ```
 |||(2018)abc|||
 ```
-###Greater than
-Greater than is indicated by `>`:
+### Not during
+Not during is indicated by `!`:
+```
+|||(!2018)abc|||
+```
+### After
+After than is indicated by `>`:
 ```
 |||(>2018)abc|||
 ```
-###Greater than or equals
-Greater than or equals is indicated `>=`:
+### During or after
+During or after is indicated by `+`:
 ```
-|||(>=2018)abc|||
+|||(+2018)abc|||
 ```
-###Less than
-Less than is indicated by `<`:
+### Before
+Before is indicated by `<`:
 ```
 |||(<2018)abc|||
 ```
-###Less than or equals
-Less than or equals is indicated `<=`:
+### During or before
+During or before is indicated by `-`:
 ```
-|||(<=2018)abc|||
+|||(-2018)abc|||
 ```

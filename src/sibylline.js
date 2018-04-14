@@ -4,7 +4,16 @@ const sibylline = {
     render: function(input, timeInput, variablesInput, holderInput){
 
         const parentheticalPattern = /^\((.*?)\)/
-        const operatorPattern = /[<>=]+?[=]?/
+        const operatorPattern = /^[\<\>\!\+\-]+?/
+
+        const operators = {
+            during: null,
+            notDuring: "!",
+            after: ">",
+            before: "<",
+            duringOrAfter: "+",
+            duringOrBefore: "-"
+        }
 
         var time
         setTime();
@@ -185,29 +194,33 @@ const sibylline = {
                 if(text == ""){
                     var operator = option.operator
                     var reference = option.reference
-                    if(operator == "<"){
+
+                    if(operator == operators.notDuring){
+                        if(time != reference){
+                            text = option.text
+                        }
+                    }
+                    else if(operator == operators.before){
                         if(time < reference){
                             text = option.text
                         }
                     }
-                    else if(operator == ">"){
+                    else if(operator == operators.after){
                         if(time > reference){
                             text = option.text
                         }
                     }
-                    else if(operator == "<="){
+                    else if(operator == operators.duringOrBefore){
                         if(time <= reference){
                             text = option.text
                         }
                     }
-                    else if(operator == ">="){
+                    else if(operator == operators.duringOrAfter){
                         if(time >= reference){
                             text = option.text
                         }
                     }
-                    else if(operator == null){
-
-                        //A lack of operator character is interpreted as "equals"
+                    else if(operator == operators.during){
                         if(time == reference){
                             text = option.text
                         }

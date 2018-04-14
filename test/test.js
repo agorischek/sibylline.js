@@ -45,30 +45,37 @@ describe("Interpreter", function(){
       )
   })
 
-  it("should recognize the less than operator", function(){
+  it("should recognize the not during operator", function(){
+      assert.equal(
+          sibylline.render("a|||(!2000)b|c|||d", 2017),
+          "abd"
+      )
+  })
+
+  it("should recognize the before operator", function(){
       assert.equal(
           sibylline.render("a|||(<2018)b|c|||d", 2017),
           "abd"
       )
   })
 
-  it("should recognize the greater than operator", function(){
+  it("should recognize the after operator", function(){
       assert.equal(
           sibylline.render("a|||(>2018)b|c|||d", 2019),
           "abd"
       )
   })
 
-  it("should recognize the less than or equal operator", function(){
+  it("should recognize the during or before operator", function(){
       assert.equal(
-          sibylline.render("a|||(<=2018)b|c|||d", 2016),
+          sibylline.render("a|||(-2018)b|c|||d", 2016),
           "abd"
       )
   })
 
-  it("should recognize the greater than or equal operator", function(){
+  it("should recognize the during or after operator", function(){
       assert.equal(
-          sibylline.render("a|||(>=2018)b|c|||d", 2020),
+          sibylline.render("a|||(+2018)b|c|||d", 2020),
           "abd"
       )
   })
@@ -82,9 +89,30 @@ describe("Interpreter", function(){
 
   it("should accept a custom holder", function(){
       assert.equal(
-          sibylline.render("a&&&&(>=2018)b|c&&&&d", 2020, null, "&&&&"),
+          sibylline.render("a&&&&(+2018)b|c&&&&d", 2020, null, "&&&&"),
           "abd"
       )
   })
+
+  it("should process a document with a lot of elements", function(){
+      assert.equal(
+          sibylline.render("a|||(2018)b|(>2018)c|d|||ef|||(-2020)g|h|||ijk|||(<2030)l|(>2040)|m|||", 2018),
+          "abefgijkl"
+      )
+  })
+
+  it("should process a realistic document", function(){
+      assert.equal(
+          sibylline.render("We |||(<2020)will begin construction in|began construction in||| 2020.", 2018),
+          "We will begin construction in 2020."
+      )
+  })
+
+  // it("should ignore holders that are escaped", function(){
+  //     assert.equal(
+  //         sibylline.render("a|||bc(<2020)will begin construction in|began construction in||| 2020.", 2018),
+  //         "We will begin construction in 2020."
+  //     )
+  // })
 
 })
