@@ -22,8 +22,8 @@ Conditions for rendering are indicated in parentheses following the opening trip
 ```
 a|||(2018)b|||c
 
-\\During 2018 --> ac
-\\Not during 2018 --> abc
+\\During 2018 --> abc
+\\Not during 2018 --> ac
 ```
 
 Content options are separated by single pipes:
@@ -38,10 +38,10 @@ a|||(2018)b|(2019)c|||d
 
 If none of the options with conditions match, the first option without a condition is used:
 ```
-a|||(2018)b|c|d|||f
+a|||(2018)b|c|d|||e
 
-\\During 2018 --> abf
-\\Not during 2018 --> acf
+\\During 2018 --> abe
+\\Not during 2018 --> ace
 ```
 
 ## Render
