@@ -455,4 +455,7 @@ const sibylline = {
     }
 }
 
-module.exports = sibylline;
+// Define export if running in a Node environment; do nothing if in the browser
+if (typeof module !== "undefined" && typeof module.exports !== "undefined"){
+    module.exports = sibylline;
+}
