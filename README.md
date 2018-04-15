@@ -20,35 +20,28 @@ Conditional content to be processed by the Sibylline interpreter is wrapped in t
 
 Conditions for rendering are indicated in parentheses following the opening triple pipe:
 ```
-a|||(>2010)b|||c
+a|||(2018)b|||c
 
-\\During or before 2010 --> ac
-\\After 2010 --> abc
+\\During 2018 --> ac
+\\Not during 2018 --> abc
 ```
 
 Content options are separated by single pipes:
-```
-a|||(>2010)b|c|||d
 
-\\During or before 2010 --> acd
-\\After 2010 --> abd
 ```
+a|||(2018)b|(2019)c|||d
 
-Each option can have its own condition:
-```
-a|||(>2010)b|(<2000)c|d|||e
-
-\\Before 2000 --> ace
-\\2000 through 2010 --> ade
-\\After 2010 --> abe
+\\During 2018 --> abd
+\\During 2019 --> acd
+\\Not during 2018 or 2019 --> ad
 ```
 
 If none of the options with conditions match, the first option without a condition is used:
 ```
-a|||(<=2018)b|c|d|e|||f
+a|||(2018)b|c|d|||f
 
-\\2018 --> abf
-\\Not 2018 --> acf
+\\During 2018 --> abf
+\\Not during 2018 --> acf
 ```
 
 ## Render
