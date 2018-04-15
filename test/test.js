@@ -108,11 +108,81 @@ describe("Interpreter", function(){
       )
   })
 
-  // it("should ignore holders that are escaped", function(){
-  //     assert.equal(
-  //         sibylline.render("a|||bc(<2020)will begin construction in|began construction in||| 2020.", 2018),
-  //         "We will begin construction in 2020."
-  //     )
-  // })
+  it("should handle YYYY-MM", function(){
+      assert.equal(
+          sibylline.render("a|||(<2018-12)b|c|||d", "2018-11"),
+          "abd"
+      )
+  })
+
+  it("should handle YYYY-MM relative to actual time", function(){
+      assert.equal(
+          sibylline.render("a|||(<2018-01-31)b|c|||d"),
+          "acd"
+      )
+  })
+
+  it("should handle YYYY-MM-DD", function(){
+      assert.equal(
+          sibylline.render("a|||(<2018-12-31)b|c|||d", "2018-11-30"),
+          "abd"
+      )
+  })
+
+  it("should handle YYYY-MM-DD relative to actual time", function(){
+      assert.equal(
+          sibylline.render("a|||(<2019-12-31)b|c|||d"),
+          "abd"
+      )
+  })
+
+  it("should handle MM-DD", function(){
+      assert.equal(
+          sibylline.render("a|||(>02-20)b|c|||d", "2018-11-30"),
+          "abd"
+      )
+  })
+
+  it("should handle MM-DD relative to actual time", function(){
+      assert.equal(
+          sibylline.render("a|||(>02-20)b|c|||d"),
+          "abd"
+      )
+  })
+
+  it("should handle MM", function(){
+      assert.equal(
+          sibylline.render("a|||(-08)b|c|||d", "2018-11-30"),
+          "acd"
+      )
+  })
+
+  it("should handle MM relative to actual time", function(){
+      assert.equal(
+          sibylline.render("a|||(+08)b|c|||d"),
+          "acd"
+      )
+  })
+
+  it("should handle an input time that's more specific than the condition time", function(){
+      assert.equal(
+          sibylline.render("a|||(2018)b|c|||d", "2018-11-30"),
+          "abd"
+      )
+  })
+
+  it("should handle a condition time that's more specific than the input time", function(){
+      assert.equal(
+          sibylline.render("a|||(2018-11-30)b|c|||d", "2018"),
+          "abd"
+      )
+  })
+
+  it("should handle a fully qualified timestamp as a condition", function(){
+      assert.equal(
+          sibylline.render("a|||(>2018-04-14T22:05:27-07:00)b|c|||d"),
+          "abd"
+      )
+  })
 
 })
