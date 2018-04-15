@@ -7,11 +7,11 @@ Sibylline is a language-agnostic time-dependent content markup notation. It enab
 ```
 It |||(2018)is|isn’t||| the year Twenty Eighteen.
 
-\\2018 --> It is the year Twenty Eighteen.
-\\Not 2018 --> It isn't year Twenty Eighteen.
+\\During 2018 --> It is the year Twenty Eighteen.
+\\Not during 2018 --> It isn't year Twenty Eighteen.
 ```
 
-Conditional content to be processed by Sibylline is wrapped in triple pipes (`|||`).
+Conditional content to be processed by the Sibylline interpreter is wrapped in triple pipes (`|||`).
 ```
 |||This content will be processed. |||This content won't be processed.
 
@@ -22,7 +22,7 @@ Conditions for rendering are indicated in parentheses following the opening trip
 ```
 a|||(>2010)b|||c
 
-\\2010 or before --> ac
+\\During or before 2010 --> ac
 \\After 2010 --> abc
 ```
 
@@ -30,7 +30,7 @@ Content options are separated by single pipes:
 ```
 a|||(>2010)b|c|||d
 
-\\2010 or before --> acd
+\\During or before 2010 --> acd
 \\After 2010 --> abd
 ```
 
@@ -52,13 +52,13 @@ a|||(<=2018)b|c|d|e|||f
 ```
 
 ## Render
-The main function in Sibylline is `render`, which requires the raw content for processing as input:
+The main function in the Sibylline interpreter is `render`, which requires the raw content for processing as input:
 ```
 sibylline.render("a|||(2018)b|||c")
 ```
-It also accepts an optional timestamp, an optional variable object, and an optional custom holder string:
+It also accepts an optional explicit timestamp:
 ```
-sibylline.render("a&&(2018)b&&c", "2019", {milestone:"2020"}, "&&")
+sibylline.render("a|||(2018)b|||c", "2019")
 ```
 
 ## Operators
@@ -93,3 +93,33 @@ During or before is indicated by `-`:
 ```
 |||(-2018)abc|||
 ```
+
+## Time notation
+Sibylline provides five custom time shorthand patterns, which are disambituguated based on their structure. All other patterns are parsed by the [underlying date engine](http://momentjs.com/docs/#/parsing/string/).
+### Year only
+Follows `YYYY` format:
+```
+|||(2018)abc|||
+```
+### Year and month
+Follows `YYYY-MM` format:
+```
+|||(2018-12)abc|||
+```
+### Year, month, and day
+Follows `YYYY-MM-DD` format:
+```
+|||(2018-12-31)abc|||
+```
+### Month only
+Follows `MM` format:
+```
+|||(12)abc|||
+```
+At evaluation time, will be qualified with the current year.
+### Month and day
+Follows `MM-DD` format:
+```
+|||(12-31)abc|||
+```
+At evaluation time, will be qualified with the current year.
