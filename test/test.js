@@ -1,5 +1,5 @@
 const assert = require("assert");
-const sibylline = require("../src/sibylline.js")
+const sibylline = require("../sibylline.js")
 
 describe("Interpreter", function(){
 

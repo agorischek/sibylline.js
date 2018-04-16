@@ -2,7 +2,7 @@
   "name": "sibylline",
   "version": "0.0.1",
   "description": "Sibylline JavaScript interpretter",
-  "main": "index.js",
+  "main": "sibylline.js",
   "directories": {
     "test": "test"
   },
