@@ -25,6 +25,8 @@
   },
   "devDependencies": {
     "assert": "^1.4.1",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
     "mocha": "^5.1.0"
   }
 }
