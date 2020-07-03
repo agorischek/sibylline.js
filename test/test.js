@@ -99,8 +99,8 @@ describe("Interpreter", function() {
     assert.equal(sibylline.render("a|||(<2019-12-31)b|c|||d"), "acd");
   });
 
-  it.only("should handle MM-DD", function() {
-    assert.equal(sibylline.render("a|||(>02-20)b|c|||d", "2018-11-30"), "abd");
+  it("should handle MM-DD", function() {
+    assert.equal(sibylline.render("a|||(>02-20)b|c|||d", "2018-11-30"), "acd");
   });
 
   it("should handle MM-DD relative to actual time", function() {
