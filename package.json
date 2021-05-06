@@ -21,7 +21,7 @@
   "homepage": "https://github.com/agorischek/sibylline.js#readme",
   "dependencies": {
     "moment": "^2.27.0",
-    "underscore": "^1.10.2"
+    "underscore": "^1.13.1"
   },
   "devDependencies": {
     "assert": "^2.0.0",
