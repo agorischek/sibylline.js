@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/agorischek/sibylline.js#readme",
   "dependencies": {
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "underscore": "^1.13.1"
   },
   "devDependencies": {
