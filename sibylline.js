@@ -1,4 +1,3 @@
-const _ = require("underscore");
 const moment = require("moment");
 
 const sibylline = {
@@ -403,7 +402,7 @@ const sibylline = {
     }
 
     function each(list, action) {
-      _.each(list, action);
+      list.forEach(action);
     }
 
     function isEven(num) {

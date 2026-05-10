@@ -2,10 +2,14 @@
 
 _Adj. Written by those who can see the future._
 
-[![Build Status](https://dev.azure.com/agorischek/packages/_apis/build/status/Sibylline/Sibylline%20CI?branchName=master)](https://dev.azure.com/agorischek/packages/_build?definitionScope=%5CSibylline)
+[![CI](https://github.com/agorischek/sibylline.js/actions/workflows/ci.yml/badge.svg)](https://github.com/agorischek/sibylline.js/actions/workflows/ci.yml)
 [![Dependencies](https://img.shields.io/depfu/agorischek/sibylline.js.svg)](https://depfu.com/repos/agorischek/sibylline.js)
 [![Version](https://img.shields.io/npm/v/sibylline.svg)](https://www.npmjs.com/package/sibylline)
 [![License](https://img.shields.io/github/license/agorischek/sibylline.js.svg)](https://github.com/agorischek/sibylline.js/blob/master/LICENSE)
+
+## Publishing
+
+Releases are published by the [Publish Package](https://github.com/agorischek/sibylline.js/actions/workflows/publish.yml) GitHub Actions workflow using npm Trusted Publishing.
 
 Sibylline is a language-agnostic time-dependent content markup notation. It enables the advance declarative authoring of text that will render differently depending on the time of rendering. It can be used with HTML, Markdown, plaintext, etc., and it can be interpreted at built time, server render time, client render time, etc. The interpreter reference implementation is written in JavaScript.
 
