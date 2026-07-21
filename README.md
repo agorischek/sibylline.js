@@ -3,7 +3,6 @@
 _Adj. Written by those who can see the future._
 
 [![CI](https://github.com/agorischek/sibylline.js/actions/workflows/ci.yml/badge.svg)](https://github.com/agorischek/sibylline.js/actions/workflows/ci.yml)
-[![Dependencies](https://img.shields.io/depfu/agorischek/sibylline.js.svg)](https://depfu.com/repos/agorischek/sibylline.js)
 [![Version](https://img.shields.io/npm/v/sibylline.svg)](https://www.npmjs.com/package/sibylline)
 [![License](https://img.shields.io/github/license/agorischek/sibylline.js.svg)](https://github.com/agorischek/sibylline.js/blob/master/LICENSE)
 
